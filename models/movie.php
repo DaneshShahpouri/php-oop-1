@@ -9,16 +9,17 @@ class Movie
     public $duration;
     public $star;
     public $isColor;
-    public function color($year)
+    public function color()
     {
-        if ($year > 1960) {
-            $this->isColor = true;
+
+        if ($this->year > 1960) {
+            return 'si';
         } else {
-            $this->isColor = false;
+            return 'no';
         }
     }
 
-    function __construct(string $title, string $genre, string $director, int $year, string $duration, string $star)
+    function __construct(string $title, array $genre, string $director, int $year, string $duration, string $star)
     {
         $this->title = $title;
         $this->genre = $genre;
@@ -26,7 +27,9 @@ class Movie
         $this->year = $year;
         $this->duration = $duration;
         $this->star = $star;
-        $this->isColor = ($this->year < 1965) ? 'no' : 'si';
+        $this->isColor = $this->color();
     }
 }
+
+
 ?>

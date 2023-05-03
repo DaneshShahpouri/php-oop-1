@@ -10,6 +10,7 @@ require_once './models/db.php'
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OOP</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -17,13 +18,13 @@ require_once './models/db.php'
     <table>
 
         <thead>
-            <td>Titolo</td>
-            <td>Genere</td>
-            <td>Regista</td>
-            <td>Anno</td>
-            <td>Durata</td>
-            <td>Star</td>
-            <td>A colori</td>
+            <th>Titolo</th>
+            <th>Genere</th>
+            <th>Regista</th>
+            <th>Anno</th>
+            <th>Durata</th>
+            <th>Star</th>
+            <th>A colori</th>
         </thead>
         <tbody>
 
@@ -35,15 +36,42 @@ require_once './models/db.php'
                 <tr>
 
                     <?php
-                    foreach ($movie as $key) {
-                        ?>
-                        <td>
-                            <?php
-                            echo $key
-                                ?>
-                        </td>
+                    foreach ($movie as $item) {
 
-                        <?php
+                        if (is_array($item)) {
+
+                            ?>
+                            <td>
+                                <?php
+                                foreach ($item as $key => $value) {
+                                    if ($key == (count($item) - 1)) {
+                                        echo $value;
+                                    } else if ($key == (count($item) - 2)) {
+                                        echo $value . ' e ';
+                                    } else {
+
+                                        echo $value . ', ';
+                                    }
+
+                                }
+                                ?>
+                            </td>
+
+                            <?php
+
+                        } else {
+
+
+
+                            ?>
+                            <td>
+                                <?php
+                                echo $item
+                                    ?>
+                            </td>
+
+                            <?php
+                        }
                     }
                     ?>
 
