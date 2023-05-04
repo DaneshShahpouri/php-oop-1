@@ -9,7 +9,7 @@ class Movie
     public $duration;
     public $star;
     public $isColor;
-    public function color()
+    public function getColor()
     {
 
         if ($this->year > 1960) {
@@ -27,7 +27,7 @@ class Movie
         $this->year = $year;
         $this->duration = $duration;
         $this->star = $star;
-        $this->isColor = $this->color();
+        $this->isColor = $this->getColor();
     }
 }
 
